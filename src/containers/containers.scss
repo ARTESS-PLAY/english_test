@@ -1,0 +1,168 @@
+.banner {
+  .logo-container {
+    margin-top: 2px;
+    padding-top: 3px;
+    background-color: #fff;
+
+    img:first-child {
+      float: left;
+      margin-left: 12px;
+    }
+
+    img:last-child {
+      float: right;
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      height: 0;
+      clear: both;
+    }
+  }
+
+  .help-container {
+    padding-right: 90px;
+    min-height: 26px;
+    position: relative;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+
+      &:after {
+        content: '';
+        display: block;
+        height: 0;
+        clear: both;
+      }
+
+      li {
+        padding: 6px 0;
+        width: 33%;
+        height: 100%;
+        box-sizing: border-box;
+        list-style-type: none;
+        display: inline-block;
+        font-size: 14px;
+      }
+
+      li:nth-child(1) {
+        position: relative;
+        padding-left: 30px;
+        text-align: left;
+        color: #ddfed9;
+        float: left;
+
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 5px;
+          left: 10px;
+          width: 16px;
+          height: 16px;
+          background-image: url('../assets/images/candidate-icon-16.png');
+          background-size: cover;
+        }
+      }
+
+      li:nth-child(2) {
+        position: relative;
+
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 6px;
+          left: calc(50% - 80px);
+          width: 16px;
+          height: 16px;
+          background-image: url('../assets/images/timer-icon-16.png');
+          background-size: cover;
+        }
+      }
+
+      li:nth-child(3) {
+        padding: 0 10.5px 0;
+        text-align: right;
+        float: right;
+
+        button {
+          font-size: 14px;
+          margin-top: 2px;
+          display: inline-block;
+          padding: 4.2px 14px;
+          background-color: #6aade4;
+          color: #050608;
+          border-radius: 6px;
+          border: none;
+          box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 0 2px rgba(255, 255, 255, 0.3) inset, 0 1px 2px rgba(0, 0, 0, 0.29);
+
+          &:first-child {
+            padding-right: 36px;
+            position: relative;
+            margin-right: 8px;
+
+            &:after {
+              content: '';
+              display: block;
+              position: absolute;
+              top: 4px;
+              right: 14px;
+              width: 16px;
+              height: 16px;
+              background-image: url('../assets/images/help-icon.png');
+              background-size: cover;
+            }
+          }
+        }
+      }
+    }
+
+    &.end-page {
+      li:nth-child(2) {
+        display: none;
+      }
+    }
+  }
+
+  &.black {
+    .help-container {
+      background: #000;
+    }
+
+    & + .main-content-container {
+      border-top: 1px solid #000;
+    }
+  }
+}
+
+.main-content-container {
+  border-top: 1px solid transparent;
+  background-image: url('../assets/images/background.png');
+  background-repeat: repeat-x;
+  min-height: 500px;
+
+  &.full-height {
+    height: calc(100vh - 70px);
+    min-height: 0;
+
+    .test-container {
+      height: 100%;
+
+      .content {
+        height: calc(100% - 90px);
+      }
+    }
+
+    @media screen and (max-width: 1025px) {
+      height: calc(100vh - 101px);
+    }
+
+    @media screen and (max-width: 723px) {
+      height: calc(100vh - 132px);
+    }
+  }
+}

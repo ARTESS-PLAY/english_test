@@ -1,0 +1,164 @@
+.highlight {
+    background-color: #ff0;
+    position: relative;     // so the note icon will be relative to this.
+
+    &:hover {
+        &.isnote {
+            &:before {
+                display: block;
+                content: '';
+                z-index: 40;
+                width: 9px;
+                height: 9px;
+                position: absolute;
+                top: -0.4em;
+                right: 0;
+                background: url('../../assets/images/popups/iconNotes.png') no-repeat left top;
+            }
+        }
+    }
+}
+
+.highlight-notes-container {  // this acts as a blocker while the context menu / notes are visible
+    position: fixed;
+    z-index: 1;
+    width: 0;
+    height: 0;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    display: none;
+    overflow: visible;
+
+    &.visible {
+        display: block;
+    }
+
+    .context-menu-list {
+        display: none;
+        margin: 0;
+        padding: 0;
+        min-width: 120px;
+        position: absolute;
+        list-style-type: none;
+        border: 1px solid #DDD;
+        background: #EEE;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        font-size: 11px;
+
+        .context-menu-item {
+            font-weight: bold;
+            padding: 2px 2px 2px 24px;
+            background-color: #EEE;
+            position: relative;
+            user-select: none;
+            cursor: pointer;
+            min-height: 18px;
+            background-repeat: no-repeat;
+            background-position: 4px 2px;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            text-align: left;
+
+            &.icon-highlight {
+                display: none;
+                background-image: url('../../assets/images/popups/highlight.png');
+            }
+            &.icon-note {
+                display: none;
+                background-image: url('../../assets/images/popups/page_white_edit.png');
+            }
+            &.icon-clear {
+                display: none;
+                background-image: url('../../assets/images/popups/clear-highlight.png');
+            }
+            &.icon-clearAll {
+                display: none;
+                background-image: url('../../assets/images/popups/clearAll-highlight.png');
+            }
+
+            &:hover {
+                background-color: #39F;
+            }
+
+            .disabled {
+                display: none;
+            }
+        }
+
+        &.mode-new {
+            display: block;
+            .icon-highlight, .icon-note {
+                display: block;
+            }
+        }
+        &.mode-existing {
+            display: block;
+            .icon-note {
+                display: block;
+            }
+        }
+        &.clear-all {
+            .icon-clear, .icon-clearAll {
+                display: block;
+            }
+        }
+        &.clear-single {
+            .icon-clear {
+                display: block;
+            }
+        }
+
+
+
+    }
+
+    .notes-container {
+        .note {
+            display: none;
+            background-color: rgb(255, 240, 70);
+            color: black;
+            position: absolute;
+            width: 200px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+
+            &.visible {
+                display: block;
+            }
+
+
+
+            .close {
+              //  z-index: 1;
+                position: absolute;
+                top: 3px;
+                right: 7px;
+                width: 16px;
+                height: 16px;
+                background: url('../../assets/images/popups/close-icon.png') top left no-repeat;
+                cursor: pointer;
+            }
+            .draghandle {
+                width: 100%;
+                height: 21px;
+                background-color: #db0;
+                border-bottom: 1px solid #a80;
+                border-radius: 5px 5px 0px 0px;
+                cursor: move;
+            }
+            .edit {
+                overflow-x: hidden;
+                overflow-y: auto;
+                height: 250px;
+                word-wrap: break-word;
+
+                .mainText {
+                    font-size: 14px;
+                    padding: 0px 10px 10px;
+                    outline: none;
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
